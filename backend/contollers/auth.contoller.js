@@ -53,6 +53,7 @@ export const loginUser=async(req,res)=>{
 
 }
 export const logoutUser=(req,res)=>{
+    console.log('logout controller called');
     try{
         res.cookie("jwt","",{MaxAge:0});
         res.status(200).json({message:"User logged out successfully"});

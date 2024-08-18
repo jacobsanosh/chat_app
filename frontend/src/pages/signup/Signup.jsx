@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import GenderCheckBox from "./GenderCheckBox";
 import useSignup from "../../hooks/useSignup";
 function Signup() {
-  const [inputs,setInputs]=useState({
-    fullName:"",
-    username:"",
-    password:"",
-    confirmPassword:"",
-    gender:""
+  const [inputs, setInputs] = useState({
+    fullName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
   });
-  const{loading,signup}=useSignup();
-  const handleCheckboxChange=(gender)=>{
-    setInputs({...inputs,gender});
-  }
-  const handleSubmit=async(e)=>{
+  const { loading, signup } = useSignup();
+  const handleCheckboxChange = (gender) => {
+    setInputs({ ...inputs, gender });
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
     await signup(inputs);
-  }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
@@ -37,7 +37,15 @@ function Signup() {
               >
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
               </svg>
-              <input type="text" className="grow" placeholder="full name" value={inputs.fullName} onChange={(e)=>setInputs({...inputs,fullName:e.target.value})}/>
+              <input
+                type="text"
+                className="grow"
+                placeholder="full name"
+                value={inputs.fullName}
+                onChange={(e) =>
+                  setInputs({ ...inputs, fullName: e.target.value })
+                }
+              />
             </label>
           </div>
           <div>
@@ -50,7 +58,15 @@ function Signup() {
               >
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
               </svg>
-              <input type="text" className="grow" placeholder="Username" value={inputs.username} onChange={(e)=>setInputs({...inputs,username:e.target.value})} />
+              <input
+                type="text"
+                className="grow"
+                placeholder="Username"
+                value={inputs.username}
+                onChange={(e) =>
+                  setInputs({ ...inputs, username: e.target.value })
+                }
+              />
             </label>
           </div>
 
@@ -68,7 +84,15 @@ function Signup() {
                   clipRule="evenodd"
                 />
               </svg>
-              <input type="password" className="grow" placeholder="password" value={inputs.password} onChange={(e)=>setInputs({...inputs,password:e.target.value})}/>
+              <input
+                type="password"
+                className="grow"
+                placeholder="password"
+                value={inputs.password}
+                onChange={(e) =>
+                  setInputs({ ...inputs, password: e.target.value })
+                }
+              />
             </label>
           </div>
           <div>
@@ -85,10 +109,21 @@ function Signup() {
                   clipRule="evenodd"
                 />
               </svg>
-              <input type="password" className="grow" placeholder="confirm password" value={inputs.confirmPassword} onChange={(e)=>setInputs({...inputs,confirmPassword:e.target.value})}/>
+              <input
+                type="password"
+                className="grow"
+                placeholder="confirm password"
+                value={inputs.confirmPassword}
+                onChange={(e) =>
+                  setInputs({ ...inputs, confirmPassword: e.target.value })
+                }
+              />
             </label>
           </div>
-          <GenderCheckBox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender}/>
+          <GenderCheckBox
+            onCheckboxChange={handleCheckboxChange}
+            selectedGender={inputs.gender}
+          />
           <Link
             to="/login"
             className="text-sm  hover:underline hover:text-blue-600 mt-2 inline-block"
@@ -97,7 +132,16 @@ function Signup() {
           </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2 h-max p-4">Signup</button>
+            <button
+              className="btn btn-block btn-sm mt-2 h-max p-4"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Sign Up"
+              )}
+            </button>
           </div>
         </form>
       </div>
