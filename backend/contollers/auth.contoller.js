@@ -3,14 +3,15 @@ import bcrypt from 'bcryptjs';
 import generateJWTtoken from '../utils/generateJWTtoken.js';
 export const signupUser=async(req,res)=>{
     try{
-
+        console.log('signup controller called');
         const  {fullName,username,password,confirmPassword,gender}=req.body; 
         if (password!=confirmPassword){
             return res.status(400).json({message:"Password and Confirm Password do not match"})
         }
         const userExist=await User.findOne({username});
         if(userExist){
-            return res.status(400).json({message:"User already exists"});
+            console.log('user already exists');
+            return res.status(400).json({error:"User already exists"});
         }
         const boyPics=`https://avatar.iran.liara.run/public/boy/?username=${username}`;
         const girlPics=`https://avatar.iran.liara.run/public/girl/?username=${username}`;
