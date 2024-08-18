@@ -33,6 +33,7 @@ export const sendMessage=async(req,res)=>{
 }
 export const getMessages=async(req,res)=>{
     try{
+        console.log("in get messages")
         const {id:userChatId}=req.params
         const senderId=req.user._id;
         const converstion=await Conversation.findOne({
