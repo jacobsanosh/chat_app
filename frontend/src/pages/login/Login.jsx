@@ -16,7 +16,7 @@ function Login() {
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Login to
-          <span className="text-cyan-400"> Let's Connect</span>
+          <span className="text-green-200 text-4xl"> Let's Connect</span>
         </h1>
         <form className="flex flex-col gap-5 m-5" onSubmit={handleSubmit}>
           <div>
@@ -52,13 +52,13 @@ function Login() {
           </div>
           <Link
             to="/signup"
-            className="text-sm  hover:underline hover:text-blue-600 mt-2 inline-block"
+            className="text-green-100 text-lg hover:underline hover:text-blue-600 mt-2 inline-block"
           >
             {"Don't"} have an account?
           </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2" disabled={loading}>
+            <button className="btn btn-block btn-sm mt-2 h-12" disabled={loading}>
             {loading ? <span className='loading loading-spinner '></span> : "Login"} </button>
           </div>
         </form>

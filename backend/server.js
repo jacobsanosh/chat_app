@@ -1,4 +1,5 @@
 import express from 'express';
+import {app,server} from './socket/socket.js';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
@@ -11,7 +12,7 @@ import connectToMongoDB from './db/connectToMogoDB.js';
 
 dotenv.config();
 const port=process.env.PORT||3000;
-const app=express();
+
 // setting middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -24,7 +25,7 @@ app.get('/',(req,res)=>{
     res.send('Hello World');
 });
 // for user login
-app.listen(port,()=>{
+server.listen(port,()=>{
     connectToMongoDB();
     console.log(`Server is running on port ${port}`);
 });

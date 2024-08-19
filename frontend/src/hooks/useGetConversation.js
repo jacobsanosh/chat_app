@@ -15,7 +15,7 @@ const useGetConversation = () => {
                 }
                 setConversations(res.data);
             } catch (err) {
-                toast.error(err.error);
+                toast.error(err);
                 console.log("error during fetching conversation:", err);
             } finally {
                 setLoading(false);
@@ -23,6 +23,6 @@ const useGetConversation = () => {
         };
         getConverstions();
     },[]);
-    return { loading, conversations };
+    return { loading, conversations,setConversations };
 }
 export default useGetConversation;
