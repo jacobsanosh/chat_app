@@ -23,7 +23,7 @@ export const sendMessage=async(req,res)=>{
             conversation.messages.push(newMessage._id);
         }
         await Promise.all([newMessage.save(),conversation.save()]);
-        res.status(201).json({message:"message sent successfully",data:newMessage});
+        res.status(201).json(newMessage);
     }
     
     catch(error){
@@ -36,6 +36,7 @@ export const getMessages=async(req,res)=>{
         console.log("in get messages")
         const {id:userChatId}=req.params
         const senderId=req.user._id;
+        console.log("sender id",senderId,"userChatId",userChatId)
         const converstion=await Conversation.findOne({
             participants:{$all:[senderId,userChatId]}
         }).populate("messages")

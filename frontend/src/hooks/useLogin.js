@@ -20,7 +20,7 @@ const useLogin = () => {
       localStorage.setItem("user-info", JSON.stringify(res.data));
       setAuthUser(res.data);
     } catch (err) {
-      toast.error(err.error);
+      toast.error("please check your credentials");
       console.log("error during login:", err);
     } finally {
       setLoading(false);

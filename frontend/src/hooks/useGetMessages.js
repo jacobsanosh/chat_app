@@ -10,6 +10,7 @@ const useSendMessage = () => {
         const getMessages=async()=>{
             setLoading(true);
             try{
+                
                 const res=await axios.get(`/api/messages/${selectedConversation._id}`);
                 if(res.status!==200){
                     throw new Error("Error during get messages");
@@ -18,7 +19,8 @@ const useSendMessage = () => {
                 setMessages(res.data);
             }
             catch(err){
-                toast.error('Failed to get messages',err);
+                // toast.error('Failed to get messages',err);
+                console.log("error in getMessages hook",err)
             }
             finally{
                 setLoading(false);
